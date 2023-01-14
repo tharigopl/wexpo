@@ -1,0 +1,41 @@
+{
+  "name": "wunmexpo",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "set NODE_OPTIONS=--openssl-legacy-provider && expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "predeploy": "expo export:web",
+    "deploy-hosting": "npm run predeploy && firebase deploy --only hosting"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-regular-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@fortawesome/react-native-fontawesome": "^0.3.0",
+    "@react-native-async-storage/async-storage": "~1.17.3",
+    "@react-native-firebase/app": "^16.5.0",
+    "cloudinary-react": "^1.8.1",
+    "expo": "^47.0.0",
+    "expo-cli": "^4.3.0",
+    "expo-dev-client": "~2.0.1",
+    "expo-status-bar": "~1.4.2",
+    "firebase": "^9.15.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-native": "0.70.5",
+    "react-native-gesture-handler": "~2.8.0",
+    "react-native-reanimated": "~2.12.0",
+    "react-native-web": "^0.18.10",
+    "react-navigation": "^4.4.4",
+    "react-navigation-stack": "^2.10.4",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9"
+  },
+  "private": true
+}
