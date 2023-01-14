@@ -10,7 +10,7 @@ export default function AccountList(props) {
     console.log(token + "$$$$$$$$$$");
     const getAccounts = () => {
         console.log(token);
-        fetch(`http://192.168.0.95:8000/whenuneedmeapi/accounts/`, {
+        fetch(`${process.env.REACT_APP_API_URL}/whenuneedmeapi/accounts/`, {
             method: 'GET',
             headers: {
             'Authorization': `Token ${token}`

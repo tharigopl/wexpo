@@ -23,7 +23,7 @@ export default function Auth(props) {
     const auth = (item) => {
       
         if (regView) {
-            fetch(`http://192.168.0.95:8000/whenuneedmeapi/users/`, {
+            fetch(`${process.env.REACT_APP_API_URL}/whenuneedmeapi/users/`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ export default function Auth(props) {
             })
             .catch( error => console.log(error));
           } else {
-            fetch(`http://192.168.0.95:8000/auth/`, {
+            fetch(`${process.env.REACT_APP_API_URL}/auth/`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ export default function Auth(props) {
               .catch( error => console.log(error));
           }
 
-        fetch(`http://192.168.0.95:8000/auth/`, {
+        fetch(`${process.env.REACT_APP_API_URL}/auth/`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'

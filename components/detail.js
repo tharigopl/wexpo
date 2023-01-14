@@ -14,7 +14,7 @@ export default function Detail(props) {
 
     const rateClicked = () => {
       if(t1 > 0 && t1 < 6){
-        fetch(`http://192.168.0.95:8000/whenuneedmeapi/accounts/${account.id}/rate_account/`, {
+        fetch(`${process.env.REACT_APP_API_URL}/whenuneedmeapi/accounts/${account.id}/rate_account/`, {
         method: 'POST',
         headers: {
           'Authorization': `Token ${token}`,

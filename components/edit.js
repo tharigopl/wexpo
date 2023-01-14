@@ -19,7 +19,7 @@ export default function Edit(props) {
 
       if(account.id){
 
-        fetch(`http://192.168.0.95:8000/whenuneedmeapi/accounts/${account.id}/`, {
+        fetch(`${process.env.REACT_APP_API_URL}/whenuneedmeapi/accounts/${account.id}/`, {
             method: 'PUT',
             headers:{
                 'Authorization': `Token ${token}`,
