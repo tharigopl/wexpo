@@ -14,12 +14,13 @@ export default function Edit(props) {
     const [providerSecKey, setproviderSecKey] = useState(account.providerSecKey)
     const [providerApiKey, setproviderApiKey] = useState(account.providerApiKey)
     const [providerApiEndPoint, setproviderApiEndPoint] = useState(account.providerApiEndPoint)
-
+    console.log("Edit Save Token 1 ", token);
+    console.log("Edit Save account ", account);
     const saveAccount = (item) => {
-
+      console.log("Edit Save Token ", token);
       if(account.id){
 
-        fetch(`${process.env.REACT_APP_API_URL}/whenuneedmeapi/accounts/${account.id}/`, {
+        fetch(`http://192.168.0.95:8000/whenuneedmeapi/accounts/${account.id}/`, {
             method: 'PUT',
             headers:{
                 'Authorization': `Token ${token}`,
@@ -58,31 +59,31 @@ export default function Edit(props) {
               style={styles.input}
               placeholder="Provider Name"
               onChangeText={text => setName(text)}
-              value = {name}
+              value = {name || ''}
             />
             <TextInput 
               style={styles.input}
               placeholder="Provider Description"
               onChangeText={text => setDescription(text)}
-              value = {description}
+              value = {description || ''}
             />
             <TextInput 
               style={styles.input}
               placeholder="Provider SecKey"
               onChangeText={text => setproviderSecKey(text)}
-              value = {providerSecKey}
+              value = {providerSecKey || ''}
             />
             <TextInput 
               style={styles.input}
               placeholder="Provider ApiKey"
               onChangeText={text => setproviderApiKey(text)}
-              value = {providerApiKey}
+              value = {providerApiKey || ''}
             />
             <TextInput 
               style={styles.input}
               placeholder="Provider ApiEndPoint"
               onChangeText={text => setproviderApiEndPoint(text)}
-              value = {providerApiEndPoint}
+              value = {providerApiEndPoint || ''}
             />
             <Button onPress={(item)=>saveAccount(item)} title={account.id ? "Edit" : "Add"} 
             />
@@ -111,6 +112,7 @@ Edit.navigationOptions = screenProps => ({
 const removeClicked = (props) => {
   const account = props.navigation.getParam("account")
   console.log(account);
+  console.log("Edit account removed Token ", token);
   fetch(`http://192.168.0.95:8000/whenuneedmeapi/accounts/${account.id}/`, {
       method: 'DELETE',
       headers: {

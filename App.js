@@ -5,16 +5,36 @@ import Detail from './components/detail';
 import Edit from './components/edit';
 import THome from './components/thome';
 import QuitHome from './components/QuitHome/QuitHome';
+import ProfileScreen from './components/Profile1/index';
 import Home from './components/Home/Home';
+import HomeC from './components/Home/HomeC';
 import Auth from './components/auth';
-import AddReward from './components/AddReward/AddReward';
+import AddReward from './components/UpdateUser/UpdateUser';
+import UpdateUser from './components/UpdateUser/UpdateUser';
+import UpdateUserC from './components/UpdateUser/UpdateUserC';
 import WelcomeBack from './components/WelcomeBack/WelcomeBack';
+import AddChild from './components/AddChild/AddChild';
+import AddSpouse from './components/AddSpouse/AddSpouse';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
+import React from 'react';
+import { Provider, connect } from 'react-redux';
+
+import { createStore, combineReducers } from 'redux';
+
+
+require('dotenv').config();
+console.log( "TEREREWRE"+process.env.PUBLIC_URL);
 
 const AppNavigator = createStackNavigator({  
   Auth:{screen:Auth},
+  HomeC:{screen:HomeC},
   Home:{screen:Home},
+  ProfileScreen: {screen:ProfileScreen},
+  UpdateUserC:{screen:UpdateUserC},
+  AddChild:{screen:AddChild},
+  AddSpouse:{screen:AddSpouse},
+  UpdateUser:{screen:UpdateUser},
   THome:{screen:THome},
   AccountList:{screen:AccountList},
   Detail:{screen:Detail},

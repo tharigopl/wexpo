@@ -11,10 +11,10 @@ export default function Detail(props) {
     const token = props.navigation.getParam('token', null);   
 
     const [t1, sett1] = useState(0);
-
+    console.log("Detail Token ", token);
     const rateClicked = () => {
       if(t1 > 0 && t1 < 6){
-        fetch(`${process.env.REACT_APP_API_URL}/whenuneedmeapi/accounts/${account.id}/rate_account/`, {
+        fetch(`http://192.168.0.95:8000/whenuneedmeapi/accounts/${account.id}/rate_account/`, {
         method: 'POST',
         headers: {
           'Authorization': `Token ${token}`,
@@ -80,7 +80,7 @@ Detail.navigationOptions = screenProps => ({
   },
   headerRight:(
     <Button title="Edit" color="black" 
-      onPress={()=>screenProps.navigation.navigate("Edit", {account: screenProps.navigation.getParam("account"), token:token})}
+      onPress={()=>screenProps.navigation.navigate("Edit", {account: screenProps.navigation.getParam("account"), token:screenProps.navigation.getParam("token")})}
     />
   )
 })

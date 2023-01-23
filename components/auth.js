@@ -8,6 +8,7 @@ import {faStar} from '@fortawesome/free-solid-svg-icons';
 export default function Auth(props) {
 
     const account = props.navigation.getParam('account', null);
+    const userAuth = props.navigation.getParam('userAuth', null);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -23,20 +24,28 @@ export default function Auth(props) {
     const auth = (item) => {
       
         if (regView) {
-            fetch(`${process.env.REACT_APP_API_URL}/whenuneedmeapi/users/`, {
+          
+          var data = {
+            username: username,
+            password: password
+            }
+
+            fetch(`http://192.168.0.95:8000/whenuneedmeapi/users/`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username, password})
+            body: JSON.stringify(data)
             })
             .then( res => res.json())
             .then( res => {
+              console.log(res);
               setRegView(false);
             })
             .catch( error => console.log(error));
           } else {
-            fetch(`${process.env.REACT_APP_API_URL}/auth/`, {
+            
+            fetch(`http://192.168.0.95:8000/auth/`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -45,39 +54,35 @@ export default function Auth(props) {
               })
               .then( res => res.json())
               .then( res => {
-                saveData(res.token);
-                props.navigation.navigate("MovieList");
+                console.log("#############");
+                console.log(res);
+                console.log(res.non_field_errors);
+                if(res.non_field_errors){
+                  props.navigation.navigate("Auth", {});
+                }
+                else{
+                  console.log(res.token);
+                  console.log(res.id);
+                  saveData(res.token, res.id);                
+                  props.navigation.navigate("HomeC", {userid:res.id, token:res.token});
+                }
+               
               })
               .catch( error => console.log(error));
           }
-
-        fetch(`${process.env.REACT_APP_API_URL}/auth/`, {
-            method: 'POST',
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({username, password})
-        })
-        .then(res => res.json())
-        .then(res => {
-                console.log(res.err)
-                if(res.token)
-                saveData(res.token);
-                console.log(res + "***1");    
-                props.navigation.navigate("Home", {token:res.token});            
-            })
-        .catch( error => console.log(error));
     }
 
-    const saveData = async (token) => {
+    const saveData = async (token, useridstored) => {
         await AsyncStorage.setItem('MR_Token', token)
+        await AsyncStorage.setItem('useridstored', useridstored)
+        console.log("SaVE Data");
     }
 
     const getData = async () => {
         const token = await AsyncStorage.getItem('MR_Token');
         if(token) {
             console.log("Before " + token);
-            props.navigation.navigate("Home", {token:token});
+            //props.navigation.navigate("HomeC", {token:token});
         }
         console.log("After");
     }

@@ -41,20 +41,20 @@ export default function THome(props) {
             <View style={homeStyles.container_center_horizontal}>
                 <TouchableOpacity onPress={ () => addRewardsClicked()}>
                     <View style={homeStyles.baninkgbg}>
-                        <Image style={homeStyles.baninkg_app_icon_artboard_1} source={require("../static/img/baninkg-app-iconartboard-1@2x.png")} />
+                        
                         <Text style={homeStyles.addRewardText}>Add Reward</Text>                  
                     </View>
                 </TouchableOpacity>  
                 <View ></View>       
                 <TouchableOpacity onPress={ () => accountsClicked()}>
                     <View style={homeStyles.baninkgbg}>
-                        <Image style={homeStyles.baninkg_app_icon_artboard_1} source={require("../static/img/baninkg-app-iconartboard-1@2x.png")} />
+                        
                         <Text style={homeStyles.addRewardText}>Accounts</Text>                  
                     </View>
                 </TouchableOpacity>  
                 <TouchableOpacity onPress={ () => quitSmokingClicked()}>
                     <View style={homeStyles.baninkgbg}>
-                        <Image style={homeStyles.baninkg_app_icon_artboard_1} source={require("../static/img/baninkg-app-iconartboard-1@2x.png")} />
+                        
                         <Text style={homeStyles.addRewardText}>Quit Smoking</Text>                  
                     </View>
                 </TouchableOpacity>  

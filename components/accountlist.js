@@ -10,7 +10,7 @@ export default function AccountList(props) {
     console.log(token + "$$$$$$$$$$");
     const getAccounts = () => {
         console.log(token);
-        fetch(`${process.env.REACT_APP_API_URL}/whenuneedmeapi/accounts/`, {
+        fetch(`http://192.168.0.95:8000/whenuneedmeapi/accounts/`, {
             method: 'GET',
             headers: {
             'Authorization': `Token ${token}`
@@ -26,7 +26,7 @@ export default function AccountList(props) {
       }, []);
 
     const accountClicked = (account) => {
-        props.navigation.navigate("Detail", {account: account, title: account.providerName})
+        props.navigation.navigate("Detail", {account: account, token:token, title: account.providerName})
     }
 
     return (
@@ -60,7 +60,7 @@ AccountList.navigationOptions = screenProps => ({
     },
     headerRight:(
       <Button style={styles.title} title="Add New" color="black"
-        onPress={()=>screenProps.navigation.navigate("Edit", {account: {title:'', description:''}})}
+        onPress={()=>screenProps.navigation.navigate("Edit", {account: {title:'', description:''}, token:screenProps.navigation.getParam("token")})}
       />
     )
   })
