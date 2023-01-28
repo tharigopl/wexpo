@@ -117,32 +117,32 @@ export default class HomeC extends React.Component {
                 <View style={homeStyles.container_center_horizontal}>
                     <TouchableOpacity onPress={ () => this.updateUserClicked()}>
                         <View style={homeStyles.baninkgbg}>   
-                            <Image style={homeStyles.baninkg_app_icon_artboard_1} source={require("../../assets/baninkg-app-iconartboard-1@2x.png")} />                     
+                            
                             <Text style={homeStyles.addRewardText}>Update User</Text>                  
                         </View>
                     </TouchableOpacity>  
                     <TouchableOpacity onPress={ () => this.updateProfileClicked()}>
                         <View style={homeStyles.baninkgbg}>
-                        <Image style={homeStyles.baninkg_app_icon_artboard_1} source={require("../../assets/baninkg-app-iconartboard-1@2x.png")} />                           
+                        
                             <Text style={homeStyles.addRewardText}>Update Profile</Text>                  
                         </View>
                     </TouchableOpacity> 
                     <TouchableOpacity onPress={ () => addRewardsClicked()}>
                         <View style={homeStyles.baninkgbg}>
-                        <Image style={homeStyles.baninkg_app_icon_artboard_1} source={require("../../assets/baninkg-app-iconartboard-1@2x.png")} />   
+                        
                             <Text style={homeStyles.addRewardText}>Add Reward</Text>                  
                         </View>
                     </TouchableOpacity>  
                     <View ></View>       
                     <TouchableOpacity onPress={ () => this.accountsClicked()}>
                         <View style={homeStyles.baninkgbg}>
-                        <Image style={homeStyles.baninkg_app_icon_artboard_1} source={require("../../assets/baninkg-app-iconartboard-1@2x.png")} />   
+                        
                             <Text style={homeStyles.addRewardText}>Accounts</Text>                  
                         </View>
                     </TouchableOpacity>  
                     <TouchableOpacity onPress={ () => quitSmokingClicked()}>
                         <View style={homeStyles.baninkgbg}>
-                        <Image style={homeStyles.baninkg_app_icon_artboard_1} source={require("../../assets/baninkg-app-iconartboard-1@2x.png")} />   
+                        
                             <Text style={homeStyles.addRewardText}>Quit Smoking</Text>                  
                         </View>
                     </TouchableOpacity>  

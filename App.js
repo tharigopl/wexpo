@@ -23,7 +23,6 @@ import { Provider, connect } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 
 
-require('dotenv').config();
 console.log( "TEREREWRE"+process.env.PUBLIC_URL);
 
 const AppNavigator = createStackNavigator({  
