@@ -230,7 +230,6 @@ export default class UpdateUserC extends React.Component
             <Button style={styles.title} title="Add Spouse" color="black" onPress={ ()=>this.props.navigation.navigate(
               "AddSpouse", {userid:this.state.userid, spouse:[],username:""})} />     
             </View>
-            <br></br>
             
             <Button onPress={(item)=>this.saveUser(item)} title="Save User"
             />

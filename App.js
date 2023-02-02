@@ -1,4 +1,126 @@
 import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Ionicons } from '@expo/vector-icons';
+
+import CategoriesScreen from './screens/CategoriesScreen';
+import MealsOverviewScreen from './screens/MealsOverviewScreen';
+import MealDetailScreen from './screens/MealDetailScreen';
+import FavoritesScreen from './screens/FavoritesScreen';
+import Auth from './components/auth';
+import HomeC from './components/Home/HomeC';
+import UpdateUserC from './components/UpdateUser/UpdateUserC';
+import AddChild from './components/AddChild/AddChild';
+import AddReward from './components/AddReward/AddReward';
+
+const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function DrawerNavigator() {
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#351401' },
+        headerTintColor: 'white',
+        sceneContainerStyle: { backgroundColor: '#3f2f25' },
+        drawerContentStyle: { backgroundColor: '#351401' },
+        drawerInactiveTintColor: 'white',
+        drawerActiveTintColor: '#351401',
+        drawerActiveBackgroundColor: '#e4baa1',
+      }}
+    >
+        
+      <Drawer.Screen 
+        name="HomeC"
+        component={HomeC}
+        option={{
+          headerShown:false,
+        }}
+      />  
+      <Drawer.Screen
+        name="Categories"
+        component={CategoriesScreen}
+        options={{
+          title: 'All Categories',
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="list" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="star" color={color} size={size} />
+          ),
+        }}
+      />
+    </Drawer.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <>
+      <StatusBar style="light" />
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: '#351401' },
+            headerTintColor: 'white',
+            contentStyle: { backgroundColor: '#3f2f25' },
+          }}
+        >
+          <Drawer.Screen 
+            name="Auth"
+            component={Auth}
+            option={{
+              headerShown:false,
+            }}
+          />
+          <Drawer.Screen 
+            name="UpdateUserC"
+            component={UpdateUserC}
+            option={{
+              headerShown:false,
+            }}
+          />
+          <Drawer.Screen 
+            name="AddChild"
+            component={AddChild}
+            option={{
+              headerShown:false,
+            }}
+          />
+          <Stack.Screen
+            name="Drawer"
+            component={DrawerNavigator}
+            options={{
+              headerShown: false,
+            }}
+          />        
+          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
+          <Stack.Screen
+            name="MealDetail"
+            component={MealDetailScreen}
+            options={{
+              title: 'About the Meal',
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {},
+});
+
+/* import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import AccountList from './components/accountlist';
 import Detail from './components/detail';
@@ -45,14 +167,7 @@ const AppNavigator = createStackNavigator({
 const App = createAppContainer(AppNavigator);
 
 export default App;
-/* export default function App() {
-  return (
-    <View style={styles.container_center_horizontal}>      
-      <AccountList />
-    </View>
-  );
-}
- */
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -76,3 +191,4 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   }
 });
+ */

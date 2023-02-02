@@ -7,8 +7,6 @@ import {faStar} from '@fortawesome/free-solid-svg-icons';
 
 export default function Auth(props) {
 
-    const account = props.navigation.getParam('account', null);
-    const userAuth = props.navigation.getParam('userAuth', null);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -64,7 +62,7 @@ export default function Auth(props) {
                   console.log(res.token);
                   console.log(res.id);
                   saveData(res.token, res.id);                
-                  props.navigation.navigate("HomeC", {userid:res.id, token:res.token});
+                  props.navigation.navigate("Drawer", {userid:res.id, token:res.token});
                 }
                
               })
@@ -74,7 +72,7 @@ export default function Auth(props) {
 
     const saveData = async (token, useridstored) => {
         await AsyncStorage.setItem('MR_Token', token)
-        await AsyncStorage.setItem('useridstored', useridstored)
+        await AsyncStorage.setItem('useridstored', JSON.stringify(useridstored))
         console.log("SaVE Data");
     }
 

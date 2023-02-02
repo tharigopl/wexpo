@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 import { FlatList, StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ImageBackground, Button } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import UserAPI from '../../service/user-api';
+import HomeGridTile from './HomeGridTile';
 
 
 export default class HomeC extends React.Component {
@@ -44,8 +45,6 @@ export default class HomeC extends React.Component {
         console.log("TEST TEST");
         const mrtoken = await AsyncStorage.getItem("MR_Token");
         const useridstored = await AsyncStorage.getItem("useridstored");
-        const token = this.props.navigation.getParam("token");
-
         console.log("mrtoken "+ mrtoken);
         console.log("useridstored"+ useridstored);
 
@@ -84,7 +83,6 @@ export default class HomeC extends React.Component {
         await this.setState(
             {
                 userid:useridstored,
-                token:token,
                 mrtoken:mrtoken
             }
         )
@@ -110,11 +108,17 @@ export default class HomeC extends React.Component {
         //props.navigation.navigate("QuitHome", {token:token})
     }
 
+    pressHandler = (itemData) => {
+        console.log("Inside Press Handler", item.title);
+    }
+
     render(){
         return (
-            <View style={homeStyles.container}> 
-                
-                <View style={homeStyles.container_center_horizontal}>
+            
+            <View> 
+                <Text>TEST</Text>
+                <HomeGridTile title='UpdateUser111' color="yellow" onPress={this.pressHandler}  />
+                {/* <View style={homeStyles.container_center_horizontal}>
                     <TouchableOpacity onPress={ () => this.updateUserClicked()}>
                         <View style={homeStyles.baninkgbg}>   
                             
@@ -146,7 +150,7 @@ export default class HomeC extends React.Component {
                             <Text style={homeStyles.addRewardText}>Quit Smoking</Text>                  
                         </View>
                     </TouchableOpacity>  
-                </View>  
+                </View>   */}
             </View>            
         );
     }
@@ -207,7 +211,7 @@ const homeStyles = StyleSheet.create({
     },
     container_center_horizontal: {
       display: 'flex',    
-      flexDirection: 'row',
+      flexDirection: 'column',
       justifyContent: 'center', 
     },
     text: {
